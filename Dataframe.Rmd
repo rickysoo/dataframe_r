@@ -9,16 +9,20 @@ date: "November 11th, 2020"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+<a name="toc"></a>
+
 # Table of Content
 
-1. What is Data Frame?
-1. Creating Data Frame
-1. Exploring Data Frame
-1. Displaying Data Frame
-1. Summarizing Data Frame
-1. Accessing Data in Data Frame
-1. Returning Data Frame vs Vectors
-1. More Fun with Data Frame!
+1. [What is Data Frame?](#what)
+1. [Creating Data Frame](#create)
+1. [Exploring Data Frame](#explore)
+1. [Displaying Data Frame](#display)
+1. [Summarizing Data Frame](#summarize)
+1. [Accessing Data in Data Frame](#access)
+1. [Returning Data Frame vs Vectors](#return)
+1. [More Fun with Data Frame!](#fun)
+
+<a name="what"></a>
 
 ## 1. What is Data Frame?
 
@@ -27,6 +31,10 @@ A data frame is a two-dimensional data structure in R language, consisting of ro
 ![The anatomy of a data frame](DF.png)
 
 Picture Source: https://www.geeksforgeeks.org/dataframe-operations-in-r/
+
+[Back to Table of Content](#toc)
+
+<a name="create"></a>
 
 ## 2. Creating Data Frame
 
@@ -79,6 +87,10 @@ audiobooks <- read.csv('https://raw.githubusercontent.com/rickysoo/top_audiobook
 head(audiobooks) # Show first 6 rows
 ```
 
+[Back to Table of Content](#toc)
+
+<a name="explore"></a>
+
 ## 3. Exploring Data Frame
 
 There are a number of functions to show the characteristics of a data frame.
@@ -115,6 +127,10 @@ dimnames(members)
 str(members)
 ```
 
+[Back to Table of Content](#toc)
+
+<a name="display"></a>
+
 ## 4. Displaying Data Frame
 
 A number of functions can be used to show the whole or part of the data frame in order to examine the data.
@@ -144,6 +160,10 @@ sample_n(audiobooks, size = 3) # Sample 3 rows randomly from the dataframe
 sample_frac(audiobooks, size = 0.05) ## Sample 5% of the rows randomly from the dataframe
 ```
 
+[Back to Table of Content](#toc)
+
+<a name="summarize"></a>
+
 ## 5. Summarizing Data Frame
 
 A summary of the data frame can be shown using the summary function. For character variables, it shows the mode among others. For numeric and date variables, it shows the mean, the minimum, the maximum, the median and the quartiles.
@@ -151,6 +171,10 @@ A summary of the data frame can be shown using the summary function. For charact
 ```{r}
 summary(members)
 ```
+
+[Back to Table of Content](#toc)
+
+<a name="access"></a>
 
 ## 6. Accessing Data in Data Frame
 
@@ -274,48 +298,95 @@ data <- subset(members, members$Height > 170) # Show members with height more th
 data
 ```
 
+[Back to Table of Content](#toc)
+
+<a name="return"></a>
+
 ## 7. Returning Data Frame vs Vector
+
+### Single Brackets
 
 When single brackets [] are used, the data is returned as a dataframe.
 
-When double brackets [[]] and $ are used, the data is returned as a vector.
-
 ```{r}
 data <- members[1]
-class(data) # Returns data frame
-```
-
-```{r}
-data <- members[[1]]
-class(data) # Returns vector
+class(data)
 ```
 
 ```{r}
 data <- members['Name']
-class(data) # Returns data frame
+class(data)
 ```
-```{r}
-data <- members[['Name']]
-class(data) # Returns vector
-```
-```{r}
-data <- members$Name
-class(data) # Returns vector
-```
-The "drop = FALSE" argument can be used to return a data frame instead of a vector.
+
+### Double Brackets
+
+When double brackets [[]] are used, the data is returned as a vector.
 
 ```{r}
-data <- members[, 1] # By default, drop = TRUE
-is.vector(data)
-is.data.frame(data)
-class(data) # Returns vector
+data <- members[[1]]
+class(data)
 ```
+
+```{r}
+data <- members[['Name']]
+class(data)
+```
+### $ Notation
+
+When the $ notation is used, the data is returned as a vector.
+
+```{r}
+data <- members$Name
+class(data)
+```
+### Selecting Single Row
+
+Selecting a single row returns a data frame.
+
+```{r}
+data <- members[1, ]
+class(data)
+```
+Use "drop = TRUE" when selecting a row to return a vector instead of a data frame.
+
+```{r}
+data <- members[1, , drop = TRUE]
+class(data)
+```
+
+### Selecting Single Column
+
+Selecting a single column returns a vector.
+
+```{r}
+data <- members[ , 1]
+class(data)
+```
+Use "drop = FALSE" when selecting a column to return a data frame instead of a vector.
+
 ```{r}
 data <- members[, 1, drop = FALSE] # Set drop = FALSE
-is.vector(data)
-is.data.frame(data)
-class(data) # Returns data frame
+class(data)
 ```
+
+### Selecting Single Element
+
+Selecting a single element returns a vector.
+
+```{r}
+data <- members[1, 1]
+class(data)
+```
+Use "drop = FALSE" when selecting an element to return a data frame instead of a vector.
+
+```{r}
+data <- members[1, 1, drop = FALSE]
+class(data)
+```
+
+[Back to Table of Content](#toc)
+
+<a name="fun"></a>
 
 ## 8. More Fun with Data Frame!
 
@@ -338,6 +409,8 @@ Don't forget to save any updated data frame to a CSV file by using the write.csv
 ```{r}
 write.csv(members, 'members.csv')
 ```
+
+[Back to Table of Content](#toc)
 
 ## Finally, It's....
 
