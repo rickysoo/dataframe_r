@@ -16,13 +16,13 @@ knitr::opts_chunk$set(echo = TRUE)
 1. Exploring Data Frame
 1. Displaying Data Frame
 1. Summarizing Data Frame
-1. Selecting Data from Data Frame
+1. Accessing Data in Data Frame
 1. Returning Data Frame vs Vectors
 1. More Fun with Data Frame!
 
 ## 1. What is Data Frame?
 
-A data frame is a two-dimensional data structure in R language, consisting of rows and columns. It is a special type of List data structure.
+A data frame is a two-dimensional data structure in R language, consisting of rows and columns. It is a special case of the List data structure.
 
 ![The anatomy of a data frame](DF.png)
 
@@ -152,17 +152,31 @@ A summary of the data frame can be shown using the summary function. For charact
 summary(members)
 ```
 
-## 6. Selecting Data from Data Frame
+## 6. Accessing Data in Data Frame
 
-### Selecting Cell(s)
+### Selecting Element(s)
 
-Select a single cell from a data frame by using the row and column indexes.
+Select a single elements from a data frame by using the row and column indexes.
 
 ```{r}
 data <- members[1, 1] # Row 1, column 1
 print(data)
 ```
-Select multiple cells from a data frame by using the row and column indexes.
+
+Select a single elements from a data frame by using double brackets notation.
+
+```{r}
+data <- members[[1]][1] # Row 1, column 1
+print(data)
+```
+Select a single elements from a data frame by using column name in double brackets.
+
+```{r}
+data <- members[['Name']][1] # Row 1, column 1
+print(data)
+```
+
+Select multiple elements from a data frame by using the row and column indexes.
 
 ```{r}
 data <- members[1:2, 1:2] # Rows 1 and 2, columns 1 and 2
@@ -325,7 +339,7 @@ Don't forget to save any updated data frame to a CSV file by using the write.csv
 write.csv(members, 'members.csv')
 ```
 
-## And finally, it's....
+## Finally, It's....
 
 ![The end!](end.jpg)
 
