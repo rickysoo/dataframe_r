@@ -9,6 +9,9 @@ date: "November 11th, 2020"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+GitHub - https://github.com/rickysoo/dataframe_r  
+Contact - ricky [at] rickysoo.com
+
 <a name="toc"></a>
 
 # Table of Content
@@ -16,11 +19,12 @@ knitr::opts_chunk$set(echo = TRUE)
 1. [What is Data Frame?](#what)
 1. [Creating Data Frame](#create)
 1. [Exploring Data Frame](#explore)
-1. [Displaying Data Frame](#display)
-1. [Summarizing Data Frame](#summarize)
+1. [Showing Data Frame](#show)
 1. [Accessing Data in Data Frame](#access)
 1. [Returning Data Frame vs Vectors](#return)
 1. [More Fun with Data Frame!](#fun)
+
+---
 
 <a name="what"></a>
 
@@ -33,6 +37,8 @@ A data frame is a two-dimensional data structure in R language, consisting of ro
 Picture Source: https://www.geeksforgeeks.org/dataframe-operations-in-r/
 
 [Back to Table of Content](#toc)
+
+---
 
 <a name="create"></a>
 
@@ -89,6 +95,8 @@ head(audiobooks) # Show first 6 rows
 
 [Back to Table of Content](#toc)
 
+---
+
 <a name="explore"></a>
 
 ## 3. Exploring Data Frame
@@ -123,15 +131,22 @@ dim(members)
 # The row and column names
 dimnames(members)
 
+# The list of attributes
+attributes(members)
+
 # Internal structure of the data frame
 str(members)
 ```
 
 [Back to Table of Content](#toc)
 
-<a name="display"></a>
+---
 
-## 4. Displaying Data Frame
+<a name="show"></a>
+
+## 4. Showing Data Frame
+
+### Base Package Functions
 
 A number of functions can be used to show the whole or part of the data frame in order to examine the data.
 
@@ -150,7 +165,9 @@ head(audiobooks, n = 3) # Show the first 3 rows of the data frame. The default i
 tail(audiobooks, n = 3) # Show the last 3 rows of the data frame. The default is 6 rows.
 ```
 
-The "dplyr" library provides some useful functions for data frame.
+### dplyr Package Functions
+
+The "dplyr" package provides some useful functions for showing data frame.
 
 ```{r}
 library(dplyr)
@@ -160,11 +177,7 @@ sample_n(audiobooks, size = 3) # Sample 3 rows randomly from the dataframe
 sample_frac(audiobooks, size = 0.05) ## Sample 5% of the rows randomly from the dataframe
 ```
 
-[Back to Table of Content](#toc)
-
-<a name="summarize"></a>
-
-## 5. Summarizing Data Frame
+### Showing Summary
 
 A summary of the data frame can be shown using the summary function. For character variables, it shows the mode among others. For numeric and date variables, it shows the mean, the minimum, the maximum, the median and the quartiles.
 
@@ -174,9 +187,11 @@ summary(members)
 
 [Back to Table of Content](#toc)
 
+---
+
 <a name="access"></a>
 
-## 6. Accessing Data in Data Frame
+## 5. Accessing Data in Data Frame
 
 ### Selecting Element(s)
 
@@ -300,9 +315,11 @@ data
 
 [Back to Table of Content](#toc)
 
+---
+
 <a name="return"></a>
 
-## 7. Returning Data Frame vs Vector
+## 6. Returning Data Frame vs Vector
 
 ### Single Brackets
 
@@ -386,9 +403,11 @@ class(data)
 
 [Back to Table of Content](#toc)
 
+---
+
 <a name="fun"></a>
 
-## 8. More Fun with Data Frame!
+## 7. More Fun with Data Frame!
 
 Data can be sorted using the order() function given a column name.
 
@@ -411,6 +430,8 @@ write.csv(members, 'members.csv')
 ```
 
 [Back to Table of Content](#toc)
+
+---
 
 ## Finally, It's....
 

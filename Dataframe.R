@@ -63,6 +63,9 @@ dim(members)
 # The row and column names
 dimnames(members)
 
+# The list of attributes
+attributes(members)
+
 # Internal structure of the data frame
 str(members)
 
